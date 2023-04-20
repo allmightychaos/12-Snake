@@ -44,29 +44,51 @@ void Part::draw()
 
 void Part::move(int x, int y)
 {
-    //vervollständigen
+    this->x = x;
+    this->y = y;
+    if(next)
+    {
+        next->move(this->x, this->y);
+    }
 }
 
 bool Part::contains(int x, int y)
 {
-    //vervollständigen
+    if(this->x == x && this->y == y)
+    {
+        return true;
+    }
     return false;
 }
 
 Part *Part::add(Part *p)
 {
-    //vervollständigen
+    if(!next)
+    {
+        next = p;
+    }
+    else
+    {
+        next->add(p);
+    }
+    return this;
     return this;
 }
 
 Part *Part::get(int x, int y)
 {
-    //vervollständigen
+    if(this->x == x && this->y == y)
+    {
+        return this;
+    }
     return nullptr;
 }
 
 Part *Part::remove(int x, int y)
 {
-    //vervollständigen
+    if(this->x == x && this->y == y)
+    {
+        return next;
+    }
     return nullptr;
 }
